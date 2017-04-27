@@ -4,8 +4,9 @@ from gensim import corpora
 from pprint import pprint
 from gensim.models.ldamodel import LdaModel
 import matplotlib.pyplot as plt
-from wordcloud import WordCloud, ImageColorGenerator
+from wordcloud import WordCloud
 from scipy.ndimage import imread
+from PIL import Image
 
 def key_words(content, num=20):
     """Return the key words of content based on TF-IDF
@@ -49,21 +50,16 @@ def lda_analyse(corpus, dictionary):
 
     return lda
 
-def gen_wordcloud(png, counter, font_path='msyh.ttc'):
-    image = imread(png)
+def gen_wordcloud(png, counter, filename, font_path='msyh.ttc'):
+    image = np.array(Image.open(png))
     wc = WordCloud(font_path=font_path, background_color='white', mask=image)
     wc.generate_from_frequencies(counter)
 
-    image_colors = ImageColorGenerator(image)
-    plt.imshow(wc, interpolation="bilinear")
+    wc.to_file(filename + '.png')
+    plt.imshow(wc, interpolation='bilinear')
     plt.axis("off")
     plt.figure()
-    # recolor wordcloud and show
-    # we could also give color_func=image_colors directly in the constructor
-    plt.imshow(wc.recolor(color_func=image_colors), interpolation="bilinear")
-    plt.axis("off")
-    plt.figure()
-    plt.show()
+    plt.shoe()
 
 
 
