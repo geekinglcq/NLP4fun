@@ -39,7 +39,7 @@ def cut(raw, remove_stop_word=True):
     if not remove_stop_word:
         stop_words = []
     else:
-        stop_words = [u'的', u'了', u'和', u'呢', u'而' ,u'就', u'是' ,u'都', u'及' ,u'或' ,u'且' ,u'这' ,u'着' ,u'那', u'作词', u'作曲', u'赵雷', u'雷子' ,u'在' ,u'有', '']
+        stop_words = [u'的', u'了', u'和', u'呢', u'而' ,u'就', u'是' ,u'都', u'及' ,u'或' ,u'且' ,u'这' ,u'着' ,u'那', u'作词', u'作曲', u'赵雷', u'雷子' ,u'在' ,u'有',u'我', '',u'..']
     for sent in raw:
         cut_sent = [i for i in jieba.cut(sent, cut_all=False) if not i.strip() in stop_words]
         if len(cut_sent) > 0:

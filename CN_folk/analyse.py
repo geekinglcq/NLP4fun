@@ -1,4 +1,5 @@
 import jieba.analyse
+import numpy as np
 from collections import Counter
 from gensim import corpora
 from pprint import pprint
@@ -59,7 +60,7 @@ def gen_wordcloud(png, counter, filename, font_path='msyh.ttc'):
     plt.imshow(wc, interpolation='bilinear')
     plt.axis("off")
     plt.figure()
-    plt.shoe()
+    plt.show()
 
 
 
